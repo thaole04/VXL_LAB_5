@@ -1,0 +1,51 @@
+11:39:34 **** Incremental Build of configuration Debug for project PROJECT ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/fsm.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm.d" -MT"Core/Src/fsm.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm.o"
+../Core/Src/fsm.c: In function 'uart_communication_fsm':
+../Core/Src/fsm.c:65:31: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   65 |    HAL_UART_Transmit(&huart2, startData, 4, 1000);
+      |                               ^~~~~~~~~
+      |                               |
+      |                               char *
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/fsm.c:9:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:749:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  749 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../Core/Src/fsm.c:66:59: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+   66 |    HAL_UART_Transmit(&huart2, (void *)str, sprintf(str, "%d\n", ADC_Value), 1000);
+      |                                                          ~^     ~~~~~~~~~
+      |                                                           |     |
+      |                                                           int   uint32_t {aka long unsigned int}
+      |                                                          %ld
+../Core/Src/fsm.c:67:31: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   67 |    HAL_UART_Transmit(&huart2, endData, 1, 1000);
+      |                               ^~~~~~~
+      |                               |
+      |                               char *
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/fsm.c:9:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:749:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  749 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "PROJECT.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\thao2\Desktop\Study\hcmut\HK231\VXL\thuc_hanh\Lab\VXL_LAB_5\PROJECT\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PROJECT.elf
+ 
+arm-none-eabi-size   PROJECT.elf 
+arm-none-eabi-objdump -h -S  PROJECT.elf  > "PROJECT.list"
+arm-none-eabi-objcopy  -O ihex  PROJECT.elf  "PROJECT.hex"
+arm-none-eabi-objcopy  -O binary  PROJECT.elf  "PROJECT.bin"
+   text	   data	    bss	    dec	    hex	filename
+  16788	    136	   1864	  18788	   4964	PROJECT.elf
+Finished building: default.size.stdout
+ 
+Finished building: PROJECT.bin
+Finished building: PROJECT.hex
+ 
+ 
+Finished building: PROJECT.list
+ 

@@ -1,0 +1,20 @@
+/*
+ * software_timer.c
+ *
+ *  Created on: Dec 11, 2023
+ *      Author: thao2
+ */
+
+
+int timer_counter = 0;
+int timer_flag = 0;
+
+void setTimer(int duraion);
+void timerRun(){
+	if (timer_counter > 0){
+		timer_counter--;
+		if (timer_counter == 0){
+			timer_flag = 1;
+		}
+	}
+}

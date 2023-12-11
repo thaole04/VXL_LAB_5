@@ -1,0 +1,21 @@
+/*
+ * controlData.h
+ *
+ *  Created on: Dec 10, 2023
+ *      Author: thao2
+ */
+
+#ifndef INC_CONTROLDATA_H_
+#define INC_CONTROLDATA_H_
+
+#include <stdio.h>
+
+extern char buffer[20];
+extern uint8_t index_buffer;
+
+
+void insertData(uint8_t c);
+void clearData(void);
+void deleteLastestData(void);
+
+#endif /* INC_CONTROLDATA_H_ */

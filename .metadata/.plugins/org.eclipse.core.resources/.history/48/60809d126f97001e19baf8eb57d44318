@@ -1,0 +1,20 @@
+/*
+ * controlData.h
+ *
+ *  Created on: Dec 10, 2023
+ *      Author: thao2
+ */
+
+#ifndef INC_CONTROLDATA_H_
+#define INC_CONTROLDATA_H_
+
+#include <stdio.h>
+
+#define MAX_BUFFER_SIZE 20
+extern uint8_t temp;
+extern uint8_t buffer[MAX_BUFFER_SIZE];
+extern uint8_t index_buffer;
+extern uint8_t buffer_flag;
+void initData();
+void insertBuffer();
+#endif /* INC_CONTROLDATA_H_ */
