@@ -1,0 +1,36 @@
+/*
+ * command.c
+ *
+ *  Created on: Dec 15, 2023
+ *      Author: thao2
+ */
+
+#include "controlData.h"
+#include "command.h"
+int command_mode = 0;
+
+
+
+
+void command_parser(){
+	switch (command_mode) {
+		case 0:
+			// check input for "!RST#"
+			if (buffer[0] == '!' && buffer[1] == 'R' && buffer[2] == 'S' && buffer[3] == 'T' && buffer[4] == '#') {
+				setTimer(300); // set timer for waiting, after 3s set flag to 1
+				command_mode = 1;
+			}
+			break;
+		case 1:
+			// check input "!OK#
+			if (buffer[0] == '!' && buffer[1] == 'O' && buffer[2] == 'K' && buffer[3] == '#'){
+				setTimer(0); // reset flag and timer
+				command_mode = 2; // == default
+				communiation_mode = 1;
+			}
+			break;
+		default:
+			// nothing to do
+			break;
+	}
+}

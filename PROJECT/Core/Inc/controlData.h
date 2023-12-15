@@ -24,6 +24,8 @@ extern uint8_t index_buffer;
 extern uint8_t buffer_flag;
 // adc value for uart communication
 extern uint32_t ADC_Value;
+// adc value buffer for old value in time out
+extern uint32_t ADC_Value_buffer;
 // function to set initial data to buffer or reset data in buffer
 void initData();
 // function insert data to buffer

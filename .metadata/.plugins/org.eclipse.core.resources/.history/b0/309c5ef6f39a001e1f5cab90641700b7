@@ -1,0 +1,14 @@
+/*
+ * uart.c
+ *
+ *  Created on: Dec 15, 2023
+ *      Author: thao2
+ */
+
+#include "main.h"
+
+void getNewValue(){
+	HAL_ADC_Start(&hadc1);
+	ADC_Value = HAL_ADC_GetValue(&hadc1);
+}
+void transfer(uint8_t value);

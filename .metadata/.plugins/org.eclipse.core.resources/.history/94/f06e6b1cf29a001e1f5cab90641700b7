@@ -1,0 +1,16 @@
+/*
+ * uart.h
+ *
+ *  Created on: Dec 15, 2023
+ *      Author: thao2
+ */
+
+#ifndef INC_UART_H_
+#define INC_UART_H_
+
+#include "stdio.h"
+
+void getNewValue();
+void transfer(uint8_t value);
+
+#endif /* INC_UART_H_ */

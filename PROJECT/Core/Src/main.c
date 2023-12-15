@@ -26,6 +26,8 @@
 #include "software_timer.h"
 #include "controlData.h"
 #include "fsm.h"
+#include "command.h"
+#include "uart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -114,6 +116,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   // set initial status for environment
+  INIT();
   initData();
   setTimer(0);
   setTimerBlinking();
@@ -121,7 +124,7 @@ int main(void)
   {
 	  if (buffer_flag == 1){ // new data
 		  if ((int)(temp[0]) == 13){ // 13 == press Enter from terminal
-			  command_parser_fsm(); // check input buffer
+			  command_parser(); // check input buffer
 			  initData(); // reset input buffer
 		  }
 		  buffer_flag = 0; // reset buffer flag
